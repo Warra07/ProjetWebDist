@@ -7,6 +7,10 @@ Le projet contient 6 dossier chacun représentant un service de l'application:
 - produits/sellers/ordersMicroService : micro service backend de l'application (eureka clients)
 -  inventoryfrt: Front end angular de l'appliccation
 
+Chaque dossier contient un Dockerfile permettant de build les images dockers.
+Deux déplloiement sont possible (fichier yaml), sur VM et sur cloud (une petite erreur sur cloud persiste, lire la derniére section).
+
+A noter : le déploiement vm, a besoin d'un dossier "/share/testdb" qui sera monté pour stocker les données.
 # Instruction pour lancement sur VM / Cloud : 
  
 Pour le lancement sur vm, il suffit de lancer : 
