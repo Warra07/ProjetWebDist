@@ -1,0 +1,20 @@
+{
+    "/vendeur/*": {
+      "target": "http://zuul-server.default.svc.cluster.local:9090",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    },
+    "/order/*": {
+        "target": "http://zuul-server.default.svc.cluster.local:9090",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+      },
+      "/produit/*": {
+        "target": "http://zuul-server.default.svc.cluster.local:9090",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+      }
+  }

@@ -1,0 +1,47 @@
+<h2>Order Details</h2> 
+
+<hr/>
+<div *ngIf="order">
+  <div>
+    <label><b>Id: </b></label> {{order.id}}
+  </div>
+  <div>
+    <label><b>Nom du client: </b></label> {{order.client.nom}}
+  </div>
+  <div>
+    <label><b>Prenom du client: </b></label> {{order.client.prenom}}
+  </div>  
+  <div>
+    <label><b>Email du client: </b></label> {{order.client.email}}
+  </div>
+  <div>
+    <label><b>Date: </b></label> {{order.date}}
+  </div>   
+  <div class="panel-heading">
+    <h2>Liste des produits </h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+          <th>Categorie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produit of produits ">
+          <td>{{produit.nom}}</td>
+          <td>{{produit.quantity}}</td>
+          <td>{{produit.price}}</td>
+          <td>{{produit.categorie}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Retour</button><br>

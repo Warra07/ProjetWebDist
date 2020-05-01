@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="menu" class="nav-link" routerLinkActive="active">Accueil</a>
+  </li>
+
+    <button class="nav-item nav-link" mat-button [matMenuTriggerFor]="produit">Produits</button>
+    <mat-menu #produit="matMenu">
+      <button mat-menu-item routerLink="produits" routerLinkActive="active">Liste</button>
+      <button mat-menu-item routerLink="addProduits" routerLinkActive="active">Ajouter</button>
+    </mat-menu>
+    <button class="nav-item nav-link" mat-button [matMenuTriggerFor]="client">Clients</button>
+    <mat-menu #client="matMenu">
+      <button mat-menu-item routerLink="clients" routerLinkActive="active">Liste</button>
+      <button mat-menu-item routerLink="addClients" routerLinkActive="active">Ajouter</button>
+    </mat-menu>
+    <button class="nav-item nav-link" mat-button [matMenuTriggerFor]="seller">Vendeurs</button>
+    <mat-menu #seller="matMenu">
+      <button mat-menu-item routerLink="sellers" routerLinkActive="active">Liste</button>
+      <button mat-menu-item routerLink="addSellers" routerLinkActive="active">Ajouter</button>
+    </mat-menu>
+    <button class="nav-item nav-link" mat-button [matMenuTriggerFor]="order">Orders</button>
+    <mat-menu #order="matMenu">
+      <button mat-menu-item routerLink="orders" routerLinkActive="active">Liste</button>
+      <button mat-menu-item routerLink="addOrders" routerLinkActive="active">Ajouter</button>
+    </mat-menu>
+  </ul>
+</nav>
+<div class="container">
+  <br>
+  <h2 style="text-align: center;">{{title}}</h2>
+  <hr>  
+  <div class="card">
+    <div class="card-body">
+  <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">Belahcel Wacim
+    <a> Projet Web</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>

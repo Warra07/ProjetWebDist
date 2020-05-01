@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Liste des Ordres</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom-Client</th>
+            <th>Prenom-Client</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders | async">
+            <td>{{order.id}}</td>
+            <td>{{order.client.nom}}</td>
+            <td>{{order.client.prenom}}</td>
+            <td>{{order.client.email}}</td>
+            <td>{{order.date}}</td>
+            <td><!--<button (click)="deleteOrder(order.id)" class="btn btn-danger">Delete</button> -->
+                <button (click)="orderDetails(order.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

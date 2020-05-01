@@ -1,0 +1,32 @@
+<h3>Ajouter Produit</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" id="nom" required [(ngModel)]="produit.nom" name="nom">
+      </div>
+  
+      <div class="form-group">
+        <label for="quantity">Quantité</label>
+        <input type="number" min="0" class="form-control" id="quantity" required [(ngModel)]="produit.quantity" name="quantity">
+      </div>
+  
+      <div class="form-group">
+          <label for="price">Prix</label>
+          <input type="number" min="0" class="form-control" id="price" required [(ngModel)]="produit.price" name="price">
+        </div>
+    
+      
+      <div class="form-group">
+        <label for="nom">Categorie</label>
+        <input type="text" class="form-control" id="categorie" required [(ngModel)]="produit.categorie" name="categorie">
+      </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>Ajouté avec succés</h4>
+  <!-- <button class="btn btn-success" (click)="newClient()">Add</button> -->
+</div>
