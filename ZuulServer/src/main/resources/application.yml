@@ -1,0 +1,93 @@
+server:
+  port: 9090
+
+spring:
+  profiles:
+    active: "dev"
+  application:
+    name: zuul-server
+
+
+---
+
+spring:
+  profiles: dev
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+zuul:
+  host:
+    connect-timeout-millis: 5000000
+    socket-timeout-millis: 5000000
+  ignoredServices: '*'
+  routes:
+    produits-service:
+      path: /produit/**
+      service-id: produits-service
+      strip-prefix: true
+    sellers-service:
+      path: /vendeur/**
+      service-id: sellers-service
+      strip-prefix: true
+    orders-service:
+      path: /order/**
+      service-id: orders-service
+      strip-prefix: true
+
+eureka:
+  instance:
+    # Leave prefer ip address to allow the gateway inside the kubernetes cluster to find this service by it's pod ip
+    preferIpAddress: true
+    # The hostname of the service, to register the pod and turn it easier for the gateway to find it
+    # For deploying eureka clients in Kubernetes you need to set the hostname as the same name of the service
+    hostname: zuul-server
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
+
+---
+
+spring:
+  profiles: prod
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+zuul:  host:    connect-timeout-millis: 5000000
+    socket-timeout-millis: 5000000
+  ignoredServices: '*'
+  routes:
+    produits-service:
+      path: /produit/**
+      service-id: produits-service
+      strip-prefix: true
+    sellers-service:
+      path: /vendeur/**
+      service-id: sellers-service
+      strip-prefix: true    orders-service:
+      path: /order/**
+      service-id: orders-service
+      strip-prefix: true
+ 
+
+eureka:
+  instance:
+    # Leave prefer ip address to allow the gateway inside the kubernetes cluster to find this service by it's pod ip
+    preferIpAddress: true
+    # The hostname of the service, to register the pod and turn it easier for the gateway to find it
+    hostname: zuul-server
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
